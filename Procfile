@@ -1,1 +1,1 @@
-web: bin/hubot -a flowdock -n Russell
+web: bin/hubot -a flowdock -n RemindMe
