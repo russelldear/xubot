@@ -42,8 +42,8 @@ module.exports = (robot) ->
         response += "#{i}. #{instructions} (#{step.distance.text})\n"
         i++
 
-      msg.send "http://maps.googleapis.com/maps/api/staticmap?size=400x400&" +
-               "path=weight:3%7Ccolor:red%7Cenc:#{route.overview_polyline.points}&sensor=false"
+      #msg.send "http://maps.googleapis.com/maps/api/staticmap?size=400x400&" +
+      #         "path=weight:3%7Ccolor:red%7Cenc:#{route.overview_polyline.points}&sensor=false"
       msg.send response
     )
 
@@ -62,5 +62,5 @@ module.exports = (robot) ->
               location +
               "&t=m&z=11"
 
-    msg.send mapUrl
+    #msg.send mapUrl
     msg.send url
