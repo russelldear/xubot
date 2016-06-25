@@ -18,6 +18,7 @@
     "hubot-scripts": "^2.17.2",
     "hubot-shipit": "^0.2.0",
     "hubot-what-the-fox": "1.1.1",
+    "newrelic": "^1.28.1",
     "xero": "0.0.8"
   },
   "engines": {
