@@ -16,7 +16,8 @@
     "hubot-rules": "^0.1.1",
     "hubot-scripts": "^2.17.2",
     "hubot-shipit": "^0.2.0",
-    "hubot-what-the-fox": "1.1.1"
+    "hubot-what-the-fox": "1.1.1",
+    "xero": "0.0.8"
   },
   "engines": {
     "node": "0.10.x"
