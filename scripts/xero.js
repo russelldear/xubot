@@ -14,7 +14,7 @@ module.exports = function(robot) {
         console.log(msg.match[2]);
         
 
-        xero.call('GET', '/Users', null, function(err, json) {
+        xero.call('GET', '/' + msg.match[2], null, function(err, json) {
             if (err) {
                 log.error(err);
                 msg.reply('Unable to contact Xero');
