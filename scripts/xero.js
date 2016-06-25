@@ -16,7 +16,7 @@ module.exports = function(robot) {
                 log.error(err);
                 msg.reply('Unable to contact Xero');
             }
-            msg.reply(json);
+            msg.reply(JSON.stringify(json));
         });
     });
 };
