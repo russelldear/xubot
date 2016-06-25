@@ -3,6 +3,8 @@ module.exports = function(robot) {
     
     robot.respond(/xero( (\w+))?/i, function(msg) {
 
+        require('newrelic');
+
         var RSA_PRIVATE_KEY = require('fs').readFileSync('privatekey.pem');
 
         var Xero = require('xero');

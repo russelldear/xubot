@@ -1,7 +1,5 @@
 #!/bin/sh
 
-require('newrelic');
-
 set -e
 
 npm install
