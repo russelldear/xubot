@@ -1,7 +1,7 @@
 
 module.exports = function(robot) {
     
-    robot.respond(/xero ( (\w+))?/i, function(msg) {
+    robot.respond(/xero( (\w+))?/i, function(msg) {
 
         var RSA_PRIVATE_KEY = require('fs').readFileSync('privatekey.pem');
 
