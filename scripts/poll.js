@@ -20,9 +20,10 @@ module.exports = function(robot) {
   };
 
   var isPrivateMsg = function(msg) {
+    console.log(msg.message.room + " " + msg.message.user.name);
     return msg.message.room === msg.message.user.name;
   };
-console.log('yep');
+
   /**
    * find a poll by id
    *
