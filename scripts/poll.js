@@ -22,7 +22,7 @@ module.exports = function(robot) {
   var isPrivateMsg = function(msg) {
     return msg.message.room === msg.message.user.name;
   };
-
+alert('yep');
   /**
    * find a poll by id
    *
