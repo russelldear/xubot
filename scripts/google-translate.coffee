@@ -102,7 +102,7 @@ module.exports = (robot) ->
             
             console.log(parsed.data.translations[0].translatedText)
             
-            translatedText = parsed.data.translations[0].translatedText.replace(/&quot;/, '')
+            translatedText = parsed.data.translations[0].translatedText.replace(/&quot;/g, '')
             language = parsed.data.translations[0].detectedSourceLanguage
             
             if parsed
