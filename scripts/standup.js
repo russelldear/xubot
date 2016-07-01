@@ -16,5 +16,6 @@ module.exports = function(robot) {
         var everyFiveMinutes = function(){
             robot.messageRoom(room, 'Standup time!');
         }
+        console.log('got here.');
     });
 }
