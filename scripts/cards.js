@@ -6,13 +6,13 @@ module.exports = function(robot) {
   var deck_id = '';
 
   robot.respond(/cards new/i, function(msg) {
-    NewDeck();
+    NewDeck(msg);
   });
 
   robot.respond(/cards draw/i, function(msg) {
 
     if (deck_id === ''){
-      NewDeck().then(function(result) {
+      NewDeck(msg).then(function(result) {
         DrawCard(msg);
       },
       function(err) {
@@ -24,7 +24,7 @@ module.exports = function(robot) {
     }
   });
   
-  function NewDeck(){
+  function NewDeck(msg){
     return new Promise(function(resolve, reject) {
       robot.http("http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1").get()(function(err, res, body) {
         deck_id = JSON.parse(body).deck_id;
