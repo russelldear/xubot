@@ -83,10 +83,13 @@ module.exports = (robot) ->
                        '(.*)', 'i')
   robot.respond pattern, (msg) ->
     term   = "\"#{msg.match[3]?.trim()}\""
-    origin = if msg.match[1] isnt undefined then "&source=" + getCode(msg.match[1], languages) else ''
-    target = if msg.match[2] isnt undefined then "&target=" + getCode(msg.match[2], languages) else '&target=en'
+    origin = if msg.match[1] isnt undefined then getCode(msg.match[1], languages) else ''
+    target = if msg.match[2] isnt undefined then getCode(msg.match[2], languages) else 'en'
 
-    url = "https://www.googleapis.com/language/translate/v2?key=AIzaSyA8TQEbhqfvQ-Zkl068BjFW4h4MqConEMc&q=" + term + origin + target
+    originParam = if msg.match[1] isnt undefined then "&source=" + origin, languages) else ''
+    targetParam = if msg.match[2] isnt undefined then "&target=" + target, languages) else '&target=en'
+
+    url = "https://www.googleapis.com/language/translate/v2?key=AIzaSyA8TQEbhqfvQ-Zkl068BjFW4h4MqConEMc&q=" + term + originParam + targetParam
     console.log(url)
     msg.http(url)
       .get() (err, res, body) ->
@@ -103,7 +106,9 @@ module.exports = (robot) ->
             console.log(parsed.data.translations[0].translatedText)
             
             translatedText = parsed.data.translations[0].translatedText.replace(/&quot;/g, '')
-            language = if parsed.data.translations[0].detectedSourceLanguage isnt undefined then parsed.data.translations[0].detectedSourceLanguage else msg.match[1]  
+            language = if parsed.data.translations[0].detectedSourceLanguage isnt undefined 
+                       then parsed.data.translations[0].detectedSourceLanguage 
+                       else msg.match[1]  
             
             if parsed
               if msg.match[2] is undefined
