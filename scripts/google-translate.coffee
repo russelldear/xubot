@@ -83,24 +83,12 @@ module.exports = (robot) ->
                        '(.*)', 'i')
   robot.respond pattern, (msg) ->
     term   = "\"#{msg.match[3]?.trim()}\""
-    origin = if msg.match[1] isnt undefined then getCode(msg.match[1], languages) else 'auto'
-    target = if msg.match[2] isnt undefined then getCode(msg.match[2], languages) else 'en'
+    origin = if msg.match[1] isnt undefined then "&source=" + getCode(msg.match[1], languages) else ''
+    target = if msg.match[2] isnt undefined then "&target=" + getCode(msg.match[2], languages) else '&target=en'
 
-    msg.http("https://translate.google.com/translate_a/single")
-      .query({
-        client: 't'
-        hl: 'en'
-        sl: origin
-        ssel: 0
-        tl: target
-        tsel: 0
-        q: term
-        ie: 'UTF-8'
-        oe: 'UTF-8'
-        otf: 1
-        dt: ['bd', 'ex', 'ld', 'md', 'qca', 'rw', 'rm', 'ss', 't', 'at']
-      })
-      .header('User-Agent', 'Mozilla/5.0')
+    url = "https://www.googleapis.com/language/translate/v2?key=AIzaSyA8TQEbhqfvQ-Zkl068BjFW4h4MqConEMc&q=" + term + origin + target
+    console.log(url)
+    msg.http(url)
       .get() (err, res, body) ->
         if err
           msg.send "Failed to connect to GAPI"
@@ -108,17 +96,21 @@ module.exports = (robot) ->
           return
 
         try
-          console.log(body);
-          if body.length > 4 and body[0] == '['
-            parsed = eval(body)
-            language = languages[parsed[2]]
-            parsed = parsed[0] and parsed[0][0] and parsed[0][0][0]
-            parsed and= parsed.trim()
+          console.log(body)
+          if body.length > 4 and body[0] == '{'
+            parsed = JSON.parse(body)
+            
+            console.log(parsed.data.translations[0].translatedText)
+            
+            translatedText = parsed.data.translations[0].translatedText.replace(/&quot;/g, '').replace(/&#39;/g, '')
+            sourceLanguage = if parsed.data.translations[0].detectedSourceLanguage isnt undefined then parsed.data.translations[0].detectedSourceLanguage else languages[getCode(msg.match[1], languages)] 
+            targetLanguage = if msg.match[2] isnt undefined then getCode(msg.match[2], languages) else 'English'  
+            
             if parsed
               if msg.match[2] is undefined
-                msg.send "#{term} is #{language} for #{parsed}"
+                msg.send "#{term} is #{languages[sourceLanguage]} for #{translatedText}"
               else
-                msg.send "The #{language} #{term} translates as #{parsed} in #{languages[target]}"
+                msg.send "The #{sourceLanguage} #{term} translates as #{translatedText} in #{languages[targetLanguage]}"
           else
             throw new SyntaxError 'Invalid JS code'
 
