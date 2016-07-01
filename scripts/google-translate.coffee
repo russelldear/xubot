@@ -83,15 +83,10 @@ module.exports = (robot) ->
                        '(.*)', 'i')
   robot.respond pattern, (msg) ->
     term   = "\"#{msg.match[3]?.trim()}\""
-    origin = if msg.match[1] isnt undefined then getCode(msg.match[1], languages) else 'fr'
-    target = if msg.match[2] isnt undefined then getCode(msg.match[2], languages) else 'en'
+    origin = if msg.match[1] isnt undefined then "&source=" + getCode(msg.match[1], languages) else ''
+    target = if msg.match[2] isnt undefined then "&target=" + getCode(msg.match[2], languages) else '&target=en'
 
-    url = "https://www.googleapis.com/language/translate/v2?key=AIzaSyA8TQEbhqfvQ-Zkl068BjFW4h4MqConEMc&q=" +
-              term +
-              "&source=" +
-              origin +
-              "&target=" +
-              target
+    url = "https://www.googleapis.com/language/translate/v2?key=AIzaSyA8TQEbhqfvQ-Zkl068BjFW4h4MqConEMc&q=" + term + origin + target
     console.log(url)
     msg.http(url)
       .get() (err, res, body) ->
