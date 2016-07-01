@@ -104,7 +104,7 @@ module.exports = (robot) ->
             
             translatedText = parsed.data.translations[0].translatedText.replace(/&quot;/g, '')
             sourceLanguage = if parsed.data.translations[0].detectedSourceLanguage isnt undefined then parsed.data.translations[0].detectedSourceLanguage else msg.match[1]  
-            targetLanguage = if msg.match[2] isnt undefined then msg.match[2] else 'English'  
+            targetLanguage = if msg.match[2] isnt undefined then getCode(msg.match[2], languages) else 'English'  
             
             if parsed
               if msg.match[2] is undefined
