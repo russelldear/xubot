@@ -13,5 +13,7 @@ module.exports = function(robot) {
                 //msg.send('I\'ve shuffled a new deck of cards');
                 //console.log(robot.deck);
             });
+        
+        console.log(robot.deck);
     });
 };
