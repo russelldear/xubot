@@ -103,7 +103,7 @@ module.exports = (robot) ->
             console.log(parsed.data.translations[0].translatedText)
             
             translatedText = parsed.data.translations[0].translatedText.replace(/&quot;/g, '')
-            language = parsed.data.translations[0].detectedSourceLanguage
+            language = if parsed.data.translations[0].detectedSourceLanguage isnt undefined then parsed.data.translations[0].detectedSourceLanguage else msg.match[1]  
             
             if parsed
               if msg.match[2] is undefined
