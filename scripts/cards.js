@@ -5,7 +5,7 @@ module.exports = function(robot) {
 
     robot.respond(/cards new deck/i, function(msg) {
 
-        msg.http("http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
+        robot.http("http://deckofcardsapi.com/api/deck/new/shuffle/?deck_count=1")
             .get(function(err, res, body){
                 console.log(body);
                 //robot.deck = JSON.parse(body).deck_id;
