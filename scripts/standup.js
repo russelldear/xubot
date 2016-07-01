@@ -1,10 +1,8 @@
 module.exports = function(robot) {
     
-    robot.respond(/xero get( (\w+))?/i, function(msg) {
-
-        var CronJob = require('cron').CronJob;
-            new CronJob('* * * * * *', function() {
-                console.log('You will see this message every second');
-            }, null, true, 'Pacific/Auckland');
-    });
+    var CronJob = require('cron').CronJob;
+    new CronJob('00 45 19 * * 1-5', function() {
+        robot.messageRoom('xero/rdtest2', 'Standup time!');
+        console.log('You will see this message every second');
+    }, null, true, 'Pacific/Auckland');
 }
