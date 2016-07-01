@@ -29,7 +29,7 @@ rspls = (msg, user_choice) ->
 
   result = "Draw!" if not result
 
-  msg.send "Xubot chooses #{choice}"
+  msg.send process.env.HUBOT_NAME + " chooses #{choice}"
   msg.send result
 
 module.exports = (robot) ->
