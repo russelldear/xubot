@@ -103,11 +103,12 @@ module.exports = (robot) ->
             console.log(parsed.data.translations[0].translatedText)
             
             translatedText = parsed.data.translations[0].translatedText.replace(/&quot;/g, '')
-            language = if parsed.data.translations[0].detectedSourceLanguage isnt undefined then parsed.data.translations[0].detectedSourceLanguage else msg.match[1]  
+            sourceLanguage = if parsed.data.translations[0].detectedSourceLanguage isnt undefined then parsed.data.translations[0].detectedSourceLanguage else msg.match[1]  
+            targetLanguage = if msg.match[2] isnt undefined then msg.match[2] else 'English'  
             
             if parsed
               if msg.match[2] is undefined
-                msg.send "#{term} is #{languages[language]} for #{translatedText}"
+                msg.send "#{term} is #{languages[sourceLanguage]} for #{translatedText}"
               else
                 msg.send "The #{language} #{term} translates as #{translatedText} in #{languages[target]}"
           else
