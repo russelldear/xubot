@@ -1,4 +1,6 @@
 module.exports = function(robot) {
+
+  var Promise = require("es6-promise").Promise
   
   var shuffled = 'New deck shuffled and ready.';
   var deck_id = '';
