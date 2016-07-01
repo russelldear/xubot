@@ -101,7 +101,7 @@ module.exports = (robot) ->
           return
 
         try
-          console.log(body);
+          console.log(body)
           if body.length > 4 and body[0] == '['
             parsed = eval(body)
             language = languages[parsed[2]]
