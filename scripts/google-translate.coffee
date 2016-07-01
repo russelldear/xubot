@@ -97,11 +97,9 @@ module.exports = (robot) ->
 
         try
           console.log(body)
-          if body.length > 4 and body[0] == '['
-            parsed = eval(body)
-            language = languages[parsed[2]]
-            parsed = parsed[0] and parsed[0][0] and parsed[0][0][0]
-            parsed and= parsed.trim()
+          if body.length > 4 and body[0] == '{'
+            parsed = JSON.parse(body)
+            console.log(parsed.data.translations[0].translatedText)
             if parsed
               if msg.match[2] is undefined
                 msg.send "#{term} is #{language} for #{parsed}"
