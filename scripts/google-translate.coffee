@@ -86,21 +86,14 @@ module.exports = (robot) ->
     origin = if msg.match[1] isnt undefined then getCode(msg.match[1], languages) else 'auto'
     target = if msg.match[2] isnt undefined then getCode(msg.match[2], languages) else 'en'
 
-    msg.http("https://translate.google.com/translate_a/single")
-      .query({
-        client: 't'
-        hl: 'en'
-        sl: origin
-        ssel: 0
-        tl: target
-        tsel: 0
-        q: term
-        ie: 'UTF-8'
-        oe: 'UTF-8'
-        otf: 1
-        dt: ['bd', 'ex', 'ld', 'md', 'qca', 'rw', 'rm', 'ss', 't', 'at']
-      })
-      .header('User-Agent', 'Mozilla/5.0')
+    url = "https://www.googleapis.com/language/translate/v2?key=AIzaSyA8TQEbhqfvQ-Zkl068BjFW4h4MqConEMc&q=" +
+              term +
+              "&source=" +
+              origin +
+              "&target=" +
+              target
+    console.log(url)
+    msg.http(url)
       .get() (err, res, body) ->
         if err
           msg.send "Failed to connect to GAPI"
