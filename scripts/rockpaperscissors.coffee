@@ -29,7 +29,7 @@ rspls = (msg, user_choice) ->
 
   result = "Draw!" if not result
 
-  msg.send "Hubot chooses #{choice}"
+  msg.send "Xubot chooses #{choice}"
   msg.send result
 
 module.exports = (robot) ->
