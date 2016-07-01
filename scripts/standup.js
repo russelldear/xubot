@@ -4,7 +4,7 @@ module.exports = function(robot) {
 
         var cronJob = require('cron').CronJob;
         var tz = 'Pacific/Auckland';
-	    new cronJob('0 0 19 21 * 1-5', workdaysNineAm, null, true, tz);
+	    new cronJob('0 0 19 23 * 1-5', workdaysNineAm, null, true, tz);
   
         var room = "xero/rdtest2";
  
