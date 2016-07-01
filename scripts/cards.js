@@ -16,7 +16,7 @@ module.exports = function(robot) {
         DrawCard(msg);
       },
       function(err) {
-        console.log('Something didn\'t work: ' + err);
+        msg.send('Something didn\'t work: ' + err);
       });
     }
     else {
@@ -32,7 +32,7 @@ module.exports = function(robot) {
           reject(err); 
         }
         else {
-          console.log(shuffled);
+          msg.send(shuffled);
           resolve(); 
         }
       });
