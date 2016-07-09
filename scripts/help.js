@@ -22,7 +22,11 @@ module.exports = function(robot) {
 @RemindMe end vote \r\n\
 ';
 
-    robot.respond(/\/?/i, function(msg) {
+    robot.respond(/help/i, function(msg) {
+        ShowHelp(msg);
+    });
+
+    robot.respond(/\/\?/i, function(msg) {
         ShowHelp(msg);
     });
 
