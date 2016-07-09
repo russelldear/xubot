@@ -1,6 +1,7 @@
 module.exports = function(robot) {
 
     var helpText = '\
+**General** \r\n\
 @RemindMe {number} {unit of time} \r\n\
 @RemindMe directions from {place} to {place} \r\n\
 @RemindMe translate me from {language} to {language} {text} \r\n\
@@ -9,11 +10,11 @@ module.exports = function(robot) {
 @RemindMe ship it \r\n\
 @RemindMe xero get {endpoint} \r\n\
  \r\n\
-Cards \r\n\
+**Cards** \r\n\
 @RemindMe cards new \r\n\
 @RemindMe cards draw \r\n\
  \r\n\
-Voting \r\n\
+**Voting** \r\n\
 @RemindMe start vote {comma-separated options} \r\n\
 @RemindMe vote {option text or number} \r\n\
 @RemindMe show choices \r\n\
