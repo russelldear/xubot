@@ -3,6 +3,7 @@ module.exports = function(robot) {
     var helpText = '\
 **General** \r\n\
 @RemindMe {number} {unit of time} \r\n\
+@RemindMe define {word} \r\n\
 @RemindMe directions from {place} to {place} \r\n\
 @RemindMe translate me from {language} to {language} {text} \r\n\
 @RemindMe pug me \r\n\
