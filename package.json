@@ -13,7 +13,6 @@
     "hubot-flowdock": "^0.7.6",
     "hubot-google-images": "^0.2.6",
     "hubot-google-translate": "^0.2.0",
-    "hubot-help": "^0.2.0",
     "hubot-heroku-keepalive": "^1.0.2",
     "hubot-redis-brain": "0.0.3",
     "hubot-rules": "^0.1.1",
