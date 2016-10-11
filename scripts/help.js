@@ -28,6 +28,7 @@ module.exports = function(robot) {
     });
 
     robot.respond(/\/\?/i, function(msg) {
+        console.log('Received help request');
         ShowHelp(msg);
     });
 
