@@ -23,7 +23,7 @@ module.exports = function(robot) {
 @RemindMe end vote \r\n\
 ';
 
-    robot.respond(/help/i, function(msg) {
+    robot.respond(/help$/i, function(msg) {
         ShowHelp(msg);
     });
 
